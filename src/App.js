@@ -9,7 +9,8 @@ const styles = theme => ({
 		marginTop: theme.distance.far,
 		fontSize: theme.font.label,
 		lineHeight: theme.lineHeight.label,
-		fontFamily: theme.font.defaultFontFamily
+		fontFamily: theme.font.defaultFontFamily,
+		display: 'flex'
 	}
 })
 

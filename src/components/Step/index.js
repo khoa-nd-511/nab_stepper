@@ -17,12 +17,11 @@ const styles = theme =>  ({
 		width: theme.size.medium,
 		height: theme.size.medium,
 		borderRadius: theme.shape.rounded,
-		marginBottom: theme.distance.medium,
 		fontSize: theme.font.number,
 		lineHeight: theme.lineHeight.number,
 		color: theme.color.primeColor,
 		border: `2px solid ${theme.color.lightPrimeColor}`,
-		transition: ['background', 'color'],
+		transition: [	'color'],
 		transitionDuration: 200,
 	},
 	visitedStepNum: {
@@ -33,19 +32,30 @@ const styles = theme =>  ({
 	activatedStepNum: {
 		boxShadow: `0 0 0 6px ${theme.color.lighterPrimeColor}`,
 	},
+	stepLabel: {
+		marginTop: theme.distance.medium,
+	},
 	activatedStepLabel: {
 		fontWeight: theme.fontWeight.active,
 		fontSize: theme.font.activeLabel,
 		lineHeight: theme.lineHeight.activeLabel,
-	}
+	},
+	leftProgress: {
+		...theme.snippets.progressLine,
+		left: -(theme.distance.default),
+	},
+	rightProgress: {
+		...theme.snippets.progressLine,
+		right: -(theme.distance.default),
+	},
 })
 
-export const step = ({ classes, label, number, visited, activated, chooseStep, width }) => {
+export const step = ({ classes, label, number, visited, activated, chooseStep, width, isFirstStep, isLastStep }) => {
 	if (!width) return null
-	const { step, stepNum, visitedStepNum, activatedStepNum, activatedStepLabel } = classes
+	const { step, stepNum, visitedStepNum, activatedStepNum, activatedStepLabel, stepLabel, leftProgress, rightProgress } = classes
 
-	let stepNumClasses = [stepNum]
-	let stepLabelClasses = []
+	const stepNumClasses = [stepNum]
+	const stepLabelClasses = [stepLabel]
 	if (visited) {
 		stepNumClasses.push(visitedStepNum)
 	}
@@ -53,10 +63,15 @@ export const step = ({ classes, label, number, visited, activated, chooseStep, w
 		stepNumClasses.push(activatedStepNum)
 		stepLabelClasses.push(activatedStepLabel)
 	}
-	// if (number)
+
+
 	return (
 		<div className={step} onClick={() => chooseStep(number)} style={{ width: width }}>
-			<div className={stepNumClasses.join(' ')}>{number}</div>
+			<div style={{ position: 'relative' }}>
+				{(activated || visited) && !isFirstStep && <div className={leftProgress} />}
+				<div className={stepNumClasses.join(' ')}>{number}</div>
+				{!activated && visited && !isLastStep && <div className={rightProgress} />}
+			</div>
 			<div className={stepLabelClasses.join(' ')}>{label}</div>
 		</div>
 	)

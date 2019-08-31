@@ -33,14 +33,23 @@ export const theme = {
 		medium: 25,
 		far: 100,
 	},
+	size: {
+		medium: 20,
+	},
 	snippets: {
 		centeringChildren: {
 			display: 'flex',
 			justifyContent: 'center',
 			alignItems: 'center',	
-		}
-	},
-	size: {
-		medium: 20,
+		},
+		progressLine: {
+			position: 'absolute',
+			top: '50%',
+			transform: 'translateY(-50%)',
+			height: 2,
+			width: '60%',
+			background: PRIME_COLOR,
+			zIndex: -1,
+		},
 	},
 }

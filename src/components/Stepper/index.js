@@ -3,12 +3,12 @@ import withStyles from 'react-jss'
 
 import { Step } from '../Step'
 
-const styles = theme => ({
+const styles = {
 	stepper: {
 		display: 'flex',
-		width: '100%'
+		width: '100%',
 	}
-})
+}
 
 const STEPS = [
 	{ number: 1, label: 'Supplier', visited: true, activated: true },
@@ -47,6 +47,8 @@ const StepperComp = ({ classes }) => {
 					chooseStep={setActiveStepHandler}
 					width={width}
 					{...step}
+					isLastStep={idx === steps.length - 1}
+					isFirstStep={idx === 0}
 				/>)
 			)}
 		</div>
