@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import withStyles from 'react-jss'
 
 import { Step } from '../Step'
 
 const styles = theme => ({
 	stepper: {
-		...theme.snippets.centeringChildren,
+		display: 'flex',
 		width: '100%'
 	}
 })
@@ -20,10 +20,15 @@ const STEPS = [
 ]
 
 const StepperComp = ({ classes }) => {
+	const [width, setWidth] = useState(0)
+	const ref = useRef(null)
 	const [steps, setActiveStep] = useState(STEPS)
 
+	useEffect(() => {
+		setWidth(ref.current.clientWidth / STEPS.length)
+	}, [])
+
 	const setActiveStepHandler = number => {
-		console.log(number)
 		const updatedSteps = steps.map(step => {
 			if (number < step.number) return {...step, activated: false, visited: false}
 			if (step.number === number) {
@@ -35,8 +40,15 @@ const StepperComp = ({ classes }) => {
 	}
 
 	return (
-		<div className={classes.stepper}>
-			{steps.map((step, idx) => <Step key={idx} {...step} chooseStep={setActiveStepHandler} />)}
+		<div className={classes.stepper} ref={ref}>
+			{steps.map((step, idx) => (
+				<Step
+					key={idx}
+					chooseStep={setActiveStepHandler}
+					width={width}
+					{...step}
+				/>)
+			)}
 		</div>
 	)
 }

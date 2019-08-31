@@ -12,7 +12,7 @@ export const theme = {
 		stepBg: '#00000014',
 	},
 	font: {
-		defaultFontFamily: 'Roboto',
+		defaultFontFamily: 'Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
 		number: 14,
 		label: 16,
 		activeLabel: 18,

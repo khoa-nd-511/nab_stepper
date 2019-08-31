@@ -3,9 +3,7 @@ import withStyles from 'react-jss'
 
 const styles = theme =>  ({
 	step: {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
+		textAlign: 'center',
 		padding: theme.distance.default,
 		cursor: 'pointer',
 		'&:hover': {
@@ -15,6 +13,7 @@ const styles = theme =>  ({
 	},
 	stepNum: {
 		...theme.snippets.centeringChildren,
+		display: 'inline-flex',
 		width: theme.size.medium,
 		height: theme.size.medium,
 		borderRadius: theme.shape.rounded,
@@ -41,7 +40,8 @@ const styles = theme =>  ({
 	}
 })
 
-export const step = ({ classes, label, number, visited, activated, chooseStep }) => {
+export const step = ({ classes, label, number, visited, activated, chooseStep, width }) => {
+	if (!width) return null
 	const { step, stepNum, visitedStepNum, activatedStepNum, activatedStepLabel } = classes
 
 	let stepNumClasses = [stepNum]
@@ -55,7 +55,7 @@ export const step = ({ classes, label, number, visited, activated, chooseStep })
 	}
 	// if (number)
 	return (
-		<div className={step} onClick={() => chooseStep(number)}>
+		<div className={step} onClick={() => chooseStep(number)} style={{ width: width }}>
 			<div className={stepNumClasses.join(' ')}>{number}</div>
 			<div className={stepLabelClasses.join(' ')}>{label}</div>
 		</div>
