@@ -34,23 +34,30 @@ const styles = theme =>  ({
 	activatedStepNum: {
 		boxShadow: `0 0 0 6px ${theme.color.lighterPrimeColor}`,
 	},
+	activatedStepLabel: {
+		fontWeight: theme.fontWeight.active,
+		fontSize: theme.font.activeLabel,
+		lineHeight: theme.lineHeight.activeLabel,
+	}
 })
 
 export const step = ({ classes, label, number, visited, activated, chooseStep }) => {
-	const { step, stepNum,visitedStepNum, activatedStepNum } = classes
+	const { step, stepNum, visitedStepNum, activatedStepNum, activatedStepLabel } = classes
 
 	let stepNumClasses = [stepNum]
+	let stepLabelClasses = []
 	if (visited) {
 		stepNumClasses.push(visitedStepNum)
 	}
 	if (activated) {
 		stepNumClasses.push(activatedStepNum)
+		stepLabelClasses.push(activatedStepLabel)
 	}
 	// if (number)
 	return (
 		<div className={step} onClick={() => chooseStep(number)}>
 			<div className={stepNumClasses.join(' ')}>{number}</div>
-			<div>{label}</div>
+			<div className={stepLabelClasses.join(' ')}>{label}</div>
 		</div>
 	)
 }

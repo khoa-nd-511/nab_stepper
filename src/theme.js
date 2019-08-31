@@ -12,13 +12,18 @@ export const theme = {
 		stepBg: '#00000014',
 	},
 	font: {
+		defaultFontFamily: 'Roboto',
 		number: 14,
 		label: 16,
-		defaultFontFamily: 'Roboto',
+		activeLabel: 18,
+	},
+	fontWeight: {
+		active: 500,
 	},
 	lineHeight: {
 		number: '12px',
 		label: '19px',
+		activeLabel: '21px',
 	},
 	shape: {
 		rounded: 100
