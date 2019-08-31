@@ -1,8 +1,15 @@
+import c from 'color'
+
+const PRIME_COLOR = '#2196F3'
+
 export const theme = {
 	color: {
-		primeColor: '#2196F3',
+		primeColor: PRIME_COLOR,
+		lightPrimeColor: c(PRIME_COLOR).alpha(0.38),
+		lighterPrimeColor: c(PRIME_COLOR).alpha(0.12),
 		white: '#fff',
 		lightGrey: '#E5E5E5',
+		stepBg: '#00000014',
 	},
 	font: {
 		number: 14,

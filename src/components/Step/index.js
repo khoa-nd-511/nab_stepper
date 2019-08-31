@@ -7,7 +7,11 @@ const styles = theme =>  ({
 		flexDirection: 'column',
 		alignItems: 'center',
 		padding: theme.distance.default,
-		backgroundColor: theme.color.lightGrey,
+		cursor: 'pointer',
+		'&:hover': {
+			borderRadius: 4,
+			backgroundColor: theme.color.stepBg,
+		},
 	},
 	stepNum: {
 		...theme.snippets.centeringChildren,
@@ -16,17 +20,36 @@ const styles = theme =>  ({
 		borderRadius: theme.shape.rounded,
 		marginBottom: theme.distance.medium,
 		fontSize: theme.font.number,
-		color: theme.color.white,
 		lineHeight: theme.lineHeight.number,
-		backgroundColor: theme.color.primeColor
-	}
+		color: theme.color.primeColor,
+		border: `2px solid ${theme.color.lightPrimeColor}`,
+		transition: ['background', 'color'],
+		transitionDuration: 200,
+	},
+	visitedStepNum: {
+		color: theme.color.white,
+		backgroundColor: theme.color.primeColor,
+		boxShadow: 'none',
+	},
+	activatedStepNum: {
+		boxShadow: `0 0 0 6px ${theme.color.lighterPrimeColor}`,
+	},
 })
 
-export const step = ({ classes, label, number }) => {
-	const { step, stepNum } = classes
+export const step = ({ classes, label, number, visited, activated, chooseStep }) => {
+	const { step, stepNum,visitedStepNum, activatedStepNum } = classes
+
+	let stepNumClasses = [stepNum]
+	if (visited) {
+		stepNumClasses.push(visitedStepNum)
+	}
+	if (activated) {
+		stepNumClasses.push(activatedStepNum)
+	}
+	// if (number)
 	return (
-		<div className={step}>
-			<div className={stepNum}>{number}</div>
+		<div className={step} onClick={() => chooseStep(number)}>
+			<div className={stepNumClasses.join(' ')}>{number}</div>
 			<div>{label}</div>
 		</div>
 	)
