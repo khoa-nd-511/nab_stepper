@@ -3,20 +3,7 @@ import withStyles, { ThemeProvider } from 'react-jss'
 
 import { Stepper } from './components/Stepper'
 import { theme } from './theme'
-
-const styles = theme => ({
-	wrapper: {
-		marginTop: theme.distance.far,
-		fontSize: theme.font.label,
-		lineHeight: theme.lineHeight.label,
-		fontFamily: theme.font.defaultFontFamily,
-	},
-	'@media (max-width: 768px)': {
-		wrapper: {
-			display: 'flex',
-		},
-	}
-})
+import { styles } from './styles'
 
 const App = ({ classes }) => {
 	return (
