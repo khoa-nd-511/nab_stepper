@@ -10,7 +10,11 @@ const styles = theme => ({
 		fontSize: theme.font.label,
 		lineHeight: theme.lineHeight.label,
 		fontFamily: theme.font.defaultFontFamily,
-		display: 'flex'
+	},
+	'@media (max-width: 768px)': {
+		wrapper: {
+			display: 'flex',
+		},
 	}
 })
 

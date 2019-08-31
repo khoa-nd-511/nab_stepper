@@ -51,5 +51,14 @@ export const theme = {
 			background: PRIME_COLOR,
 			zIndex: -1,
 		},
+		progressLineMobile: {
+			position: 'absolute',
+			left: '50%',
+			transform: 'translateX(-50%)',
+			height: '150%',
+			width: 2,
+			background: PRIME_COLOR,
+			zIndex: -1,
+		},
 	},
 }

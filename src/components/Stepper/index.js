@@ -3,12 +3,17 @@ import withStyles from 'react-jss'
 
 import { Step } from '../Step'
 
-const styles = {
+const styles = (theme) => ({
 	stepper: {
 		display: 'flex',
 		width: '100%',
+	},
+	'@media (max-width: 768px)': {
+		stepper: {
+			flexDirection: 'column',
+		},
 	}
-}
+})
 
 const STEPS = [
 	{ number: 1, label: 'Supplier', visited: true, activated: true },

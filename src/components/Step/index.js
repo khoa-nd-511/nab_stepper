@@ -48,6 +48,27 @@ const styles = theme =>  ({
 		...theme.snippets.progressLine,
 		right: -(theme.distance.default),
 	},
+	'@media (max-width: 768px)': {
+		step: {
+			display: 'flex',
+			alignItems: 'center',
+			textAlign: 'left',
+			width: 'auto !important',
+			padding: '16px 12px',
+		},
+		stepLabel: {
+			marginTop: 0,
+			marginLeft: theme.distance.medium,
+		},
+		leftProgress: {
+			...theme.snippets.progressLineMobile,
+			top: -(theme.distance.default),
+		},
+		rightProgress: {
+			...theme.snippets.progressLineMobile,
+			bottom: -(theme.distance.default),
+		},
+	}
 })
 
 export const step = ({ classes, label, number, visited, activated, chooseStep, width, isFirstStep, isLastStep }) => {
