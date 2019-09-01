@@ -14,12 +14,22 @@ const STEPS = [
 
 const StepperComp = ({ classes }) => {
 	const [width, setWidth] = useState(0)
-	const ref = useRef(null)
+	const ref = useRef()
 	const [steps, setActiveStep] = useState(STEPS)
 
+	const updateWidth = () => setWidth(ref.current.clientWidth / STEPS.length) || console.log(123123)
+
 	useEffect(() => {
-		setWidth(ref.current.clientWidth / STEPS.length)
+		updateWidth()
 	}, [])
+
+	useEffect(() => {
+		window.addEventListener('resize', updateWidth)
+
+		return () => {
+			window.removeEventListener('resize', updateWidth)
+		}
+	})
 
 	const setActiveStepHandler = number => {
 		const updatedSteps = steps.map(step => {
