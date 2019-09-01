@@ -17,7 +17,7 @@ const StepperComp = ({ classes }) => {
 	const ref = useRef()
 	const [steps, setActiveStep] = useState(STEPS)
 
-	const updateWidth = () => setWidth(ref.current.clientWidth / STEPS.length) || console.log(123123)
+	const updateWidth = () => setWidth(ref.current.clientWidth / STEPS.length)
 
 	useEffect(() => {
 		updateWidth()

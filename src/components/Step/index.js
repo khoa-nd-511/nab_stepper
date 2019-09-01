@@ -1,10 +1,12 @@
 import React from 'react'
 import withStyles from 'react-jss'
+
+import { ProgressLine } from '../ProgressLine'
 import { styles } from './styles'
 
-export const step = ({ classes, label, number, visited, activated, chooseStep, width, isFirstStep, isLastStep }) => {
+export const StepComp = ({ classes, label, number, visited, activated, chooseStep, width, isFirstStep, isLastStep }) => {
 	if (!width) return null
-	const { step, stepNum, visitedStepNum, activatedStepNum, activatedStepLabel, stepLabel, leftProgress, rightProgress } = classes
+	const { step, stepNum, visitedStepNum, activatedStepNum, activatedStepLabel, stepLabel } = classes
 
 	const stepNumClasses = [stepNum]
 	const stepLabelClasses = [stepLabel]
@@ -19,13 +21,13 @@ export const step = ({ classes, label, number, visited, activated, chooseStep, w
 	return (
 		<div className={step} onClick={() => chooseStep(number)} style={{ width: width }}>
 			<div style={{ position: 'relative' }}>
-				{(activated || visited) && !isFirstStep && <div className={leftProgress} />}
+				{!isFirstStep && <ProgressLine active={visited} before />}
 				<div className={stepNumClasses.join(' ')}>{number}</div>
-				{!activated && visited && !isLastStep && <div className={rightProgress} />}
+				{!isLastStep && <ProgressLine active={visited} current={activated} />}
 			</div>
 			<div className={stepLabelClasses.join(' ')}>{label}</div>
 		</div>
 	)
 }
 
-export const Step = withStyles(styles)(step)
+export const Step = withStyles(styles)(StepComp)

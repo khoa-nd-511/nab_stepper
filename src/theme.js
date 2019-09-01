@@ -1,15 +1,18 @@
 import c from 'color'
 
 const PRIME_COLOR = '#2196F3'
+const LIGHT_PRIME_COLOR = c(PRIME_COLOR).alpha(0.38)
+const LIGHTER_PRIME_COLOR = c(PRIME_COLOR).alpha(0.12)
 
 export const theme = {
 	color: {
 		primeColor: PRIME_COLOR,
-		lightPrimeColor: c(PRIME_COLOR).alpha(0.38),
-		lighterPrimeColor: c(PRIME_COLOR).alpha(0.12),
+		lightPrimeColor: LIGHT_PRIME_COLOR,
+		lighterPrimeColor: LIGHTER_PRIME_COLOR,
 		white: '#fff',
 		lightGrey: '#E5E5E5',
 		stepBg: '#00000014',
+		progressLine: '#BBDEFB',
 	},
 	font: {
 		defaultFontFamily: 'Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
@@ -48,7 +51,6 @@ export const theme = {
 			transform: 'translateY(-50%)',
 			height: 2,
 			width: '60%',
-			background: PRIME_COLOR,
 			zIndex: -1,
 		},
 		progressLineMobile: {
@@ -57,7 +59,6 @@ export const theme = {
 			transform: 'translateX(-50%)',
 			height: '150%',
 			width: 2,
-			background: PRIME_COLOR,
 			zIndex: -1,
 		},
 	},

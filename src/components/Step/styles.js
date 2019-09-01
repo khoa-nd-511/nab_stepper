@@ -17,8 +17,9 @@ export const styles = theme =>  ({
 		fontSize: theme.font.number,
 		lineHeight: theme.lineHeight.number,
 		color: theme.color.primeColor,
+		backgroundColor: theme.color.white,
 		border: `2px solid ${theme.color.lightPrimeColor}`,
-		transition: [	'color'],
+		transition: ['color'],
 		transitionDuration: 200,
 	},
 	visitedStepNum: {
@@ -36,14 +37,6 @@ export const styles = theme =>  ({
 		fontWeight: theme.fontWeight.active,
 		fontSize: theme.font.activeLabel,
 		lineHeight: theme.lineHeight.activeLabel,
-	},
-	leftProgress: {
-		...theme.snippets.progressLine,
-		left: -(theme.distance.default),
-	},
-	rightProgress: {
-		...theme.snippets.progressLine,
-		right: -(theme.distance.default),
 	},
 	'@media (max-width: 768px)': {
 		step: {
